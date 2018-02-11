@@ -26,7 +26,7 @@ namespace UnitTest
                 if (bResult)
                 {
                     ConsoleColor vDefaultColor = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Run " + vCurUnitTest.Name() + " Success");
                     Console.ForegroundColor = vDefaultColor;
                 }
