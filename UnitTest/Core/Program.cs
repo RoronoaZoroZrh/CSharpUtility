@@ -21,12 +21,13 @@ namespace UnitTest
             for (int i = 0; i < vUnitTestList.Count; i++)
             {
                 BaseUnitTest vCurUnitTest = vUnitTestList.ElementAt(i);
+                Console.WriteLine("Run " + vCurUnitTest.Name());
                 Boolean bResult = vCurUnitTest.RunUnitTest();
                 if (bResult)
                 {
                     ConsoleColor vDefaultColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(vCurUnitTest.Name() + " Success");
+                    Console.WriteLine("Run " + vCurUnitTest.Name() + " Success");
                     Console.ForegroundColor = vDefaultColor;
                 }
                 else

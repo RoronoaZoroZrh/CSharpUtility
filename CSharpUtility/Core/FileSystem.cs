@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CSharpUtility
@@ -13,6 +14,7 @@ namespace CSharpUtility
         public static void RemoveReadonlyAttr(String sPath)
         {
             RemoveFileReadonlyAttr(sPath);
+            RemoveDirReadonlyAttr(sPath);
         }
 
         /// <summary>
@@ -33,7 +35,22 @@ namespace CSharpUtility
         /// <param name="sDirPath">目录路径</param>
         public static void RemoveDirReadonlyAttr(String sDirPath)
         {
-
+            if (Directory.Exists(sDirPath))
+            {
+                Queue<DirectoryInfo> vSearchQueue = new Queue<DirectoryInfo>(new List<DirectoryInfo> { new DirectoryInfo(sDirPath) });
+                while (vSearchQueue.Count > 0)
+                {
+                    DirectoryInfo vCurDirInfo = vSearchQueue.Dequeue();
+                    foreach (FileInfo vFileInfo in vCurDirInfo.GetFiles()) //!去目录中文件只读属性
+                    {
+                        File.SetAttributes(vFileInfo.FullName, FileAttributes.Normal);
+                    }
+                    foreach (DirectoryInfo vDirInfo in vCurDirInfo.GetDirectories())
+                    {
+                        vSearchQueue.Enqueue(vDirInfo);
+                    }
+                }
+            }
         }
     }
 }

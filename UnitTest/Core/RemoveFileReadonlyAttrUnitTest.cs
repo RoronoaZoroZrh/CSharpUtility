@@ -15,8 +15,7 @@ namespace UnitTest
             if (!File.Exists(sTestFile)) File.Create(sTestFile).Close();
 
             //!设置文件只读属性
-            FileInfo vFileInfo = new FileInfo(sTestFile);
-            vFileInfo.IsReadOnly = true;
+            FileInfo vFileInfo = new FileInfo(sTestFile) { IsReadOnly = true };
 
             //!调用接口，正确情况
             CSharpUtility.Helper.RemoveFileReadonlyAttr(sTestFile);

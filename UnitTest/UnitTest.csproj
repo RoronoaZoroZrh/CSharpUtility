@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Core\BaseUnitTest.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Core\RemoveDirReadonlyAttrUnitTest.cs" />
     <Compile Include="Core\RemoveFileReadonlyAttrUnitTest.cs" />
     <Compile Include="Core\TestManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
