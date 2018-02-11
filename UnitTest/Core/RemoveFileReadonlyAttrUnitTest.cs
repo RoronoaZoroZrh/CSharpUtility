@@ -18,10 +18,14 @@ namespace UnitTest
             FileInfo vFileInfo = new FileInfo(sTestFile);
             vFileInfo.IsReadOnly = true;
 
-            //!调用接口
+            //!调用接口，正确情况
             CSharpUtility.Helper.RemoveFileReadonlyAttr(sTestFile);
             Boolean bExpectResult = true;
             Boolean bActualResult = vFileInfo.IsReadOnly == false;
+
+            //!调用接口，传入非法参数
+            CSharpUtility.Helper.RemoveFileReadonlyAttr(null);
+            CSharpUtility.Helper.RemoveFileReadonlyAttr("");
 
             //!清理测试资源
             if (File.Exists(sTestFile)) File.Delete(sTestFile);

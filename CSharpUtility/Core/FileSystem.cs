@@ -12,14 +12,7 @@ namespace CSharpUtility
         /// <param name="sPath">文件或目录路径</param>
         public static void RemoveReadonlyAttr(String sPath)
         {
-            if (File.Exists(sPath))
-            {
-                RemoveFileReadonlyAttr(sPath);
-            }
-            else if (Directory.Exists(sPath))
-            {
-
-            }
+            RemoveFileReadonlyAttr(sPath);
         }
 
         /// <summary>
@@ -28,7 +21,10 @@ namespace CSharpUtility
         /// <param name="sFilePath">文件路径</param>
         public static void RemoveFileReadonlyAttr(String sFilePath)
         {
-            File.SetAttributes(sFilePath, FileAttributes.Normal);
+            if (File.Exists(sFilePath))
+            {
+                File.SetAttributes(sFilePath, FileAttributes.Normal);
+            }
         }
 
         /// <summary>
